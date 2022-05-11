@@ -1,3 +1,32 @@
+원본코드 : https://github.com/easysIT/nwitter
+
+=============================오류 수정 중 ===================================
+
+#원본 코드로 대체 진행 예정..
+
+[05월04일]
+
+1. 소셜 로그인
+
+Provider 소셜 로그인 서비스 제공 업체로 비유 if(name === 'google') { // 구글 소셜 로그인 서비스 제공 provider = new firebaseInstance.auth.GoogleAuthProvider(); } else if (name === 'github') { // 깃허브 소셜 로그인 서비스 제공 provider = new firebaseInstance.auth.GithubAuthProvider(); }
+
+2. 소셜 로그인 완성 signInWithPopup() : 실제 소셜 로그인 진행하는 비동기 함수 provider를 함수 인자로 넘겨 소셜 로그인 시도 실행 후 팝업창에서 로그인 기능 생성 확인 가능
+
+Navigation 컴포넌트 네이게이션 컴포넌트로 라우터 제어 컴포넌트 생성 후 Router.js 파일에 연동
+Switch Switch를 이용해 isLoggedIn이 true인 경우에만 Navigation이 보이도록 출력 {isLoggedIn && }
+
+링크 추가 Home 컴포넌트와 Profile 컴포넌트를 링크()를 통해 이동 가능 링크만 수정되고 실제로 컴포넌트 렌더링하지 않음 컴포넌트는 대문자(Profile), path에는 소문자(profile)로 구성되어 있으니 확인! import {Link} from "react-router-dom"; ...
+
+- Home
+- My Profile
+3. 로그아웃 Profile.js 파일에서 로그아웃 버튼 생성 authServise의 함수 중 SignOut 함수 실행 > 로그아웃 로그아웃 > IndexedDB에 있는 정보를 알아서 비우고 로그아웃 처리 > 주소 표시줄은 여전히 /profile
+1. Redirect로 로그아웃 후 주소 이동 Switch 내부에 있는 Route 조건이 불충분 > Redirect가 지정한 주소로 이동 'from' props에 있는 값 > 조건 'to' props에 있는 값으로 주소 이동 import { Redirect } from "react-router-dom"; ... // 어떤 주소든(from) /루트로 변경(to)
+로그아웃 버튼 클릭 후 > 주소는 여젼히(/profile) > Redirect 동작 2) useHistoy로 로그아웃 후 주소 이동 로그아웃을 처리하는 자바스크립트 코드로 주소 이동 import { useHistory } from 'react-router-dom'; ... const histoy = useHistory(); const onLogOutClick = () => { authService.signOut(); histoy.push("/"); };
+
+
+======================================================================
+
+
 [04월27일]
 
 1. 파이어베이스 누티어 사이의 비동기 처리에서 발생하는 시간 격차로 인해 null 값을 반환한다.

@@ -1,4 +1,3 @@
-import React from 'react'
-const EditProfile = () => <span>EditProfile</span>;
+const Auth = () => <span>EditProfile</span>
 
-export default EditProfile;
+export default EditProfile
