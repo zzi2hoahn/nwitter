@@ -5,9 +5,32 @@
 + 오류로 인한, npm start error 교수님, 파일로 대체해서 진행. 실행 오류 해결 완료
 
 
+1. 데이터베이스 만들기
 
+파이어베이스 데이터베이스 NoSQL 기반 데이터베이스. p112 ~ p113 참고.
 
+리액트에서 파이어베이스 데이터베이스 사용 시 fbase.js 파일 수정.
 
+./src/fbase.js 에서 import "firebase/firestore";  / export const dbService = firebase.firestore(); 추가 후 리액트 서버 재시작.
+
+2. 파이어스토어 데이터 저장
+
+파이어스토어는 실시간으로 동작하는 데이터베이스라 트윗한 정보를 바로 반영.
+
+./src/route/Home.js 
+dbService.collection("nweets").add <- Promise를 반환하므로 async-await 문을 사용.
+컬렉션 생성 후 text 상태의 값을 문서로 저장. p116 참고.
+
+3. 파이어스토어에서 문서 읽어오기.
+
+get 함수 사용 = get 함수는 add 함수 처럼 단순히 1번만 실행으로 읽어올 수 없음.
+문서의 개수가 많으면 forEach 함수로 실행.
+
+./src/route/Home.js
+
+dbNweers.forEach((document) => console.log(document.data()));
+
+오류 수정 후 진행중..
 ======================================================================
 
 
