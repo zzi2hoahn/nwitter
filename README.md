@@ -1,8 +1,48 @@
 원본코드 : https://github.com/easysIT/nwitter
 
-[05월22일]
 
-+ 오류로 인한, npm start error 교수님, 파일로 대체해서 진행. 실행 오류 해결 완료
+[05월18일]
+
+05-2 실시간 데이터베이스로 트윗 목록 보여주기
+
+get 함수로 파이어베이스 데이터를 받아오면, 실시간 데이터 반영이 불가능함.
+이런 절차 없이 실시간으로 트윗 목록을 출력하는 방법은 실시간 데이터베이스를 도입해야함 (실시간 채팅 어플에 유용)
+1. get 함수 대신 onSnapshot 함수 사용
+
+get 함수처럼 스냅샷을 반환함 스냅샷에는 다시 무너 스냡샷들이 포함되어 있는데 문서 스냡샷들은 snapshot.docs와 같이 얻어낼 수 있음.
+*map 함수를 적용하면, 무선 스냡샷에서 원하느 값만 뽑아 다시 배열화. (map 함수 사용 시 코드 효율이 높아짐)
+ map 함수는 순회하며 만든 배열을 반환하므로 반환한 배열을 1번만 setNweets 함수에 전달하면 되니 효율적임.
+
+
+05-3 트윗 삭제 기능 만들기
+
+1. userObj 프롭스를 이용하면, Nweet 컴포넌트에 '이 사람이 이 트윗이 주인이 아니다' 쉽게 구분 가능.
+nweet.creatorId === userObj.uid와 같이 uid와 로그인한 사용자의 uid를 비교 true 또는 false.
+
+
+======================================================================
+
+[05월11일]
+
+오류로 인한, npm start error 교수님, 파일로 대체해서 진행. 실행 오류 해결 완료
+데이터베이스 만들기
+파이어베이스 데이터베이스 NoSQL 기반 데이터베이스. p112 ~ p113 참고.
+
+리액트에서 파이어베이스 데이터베이스 사용 시 fbase.js 파일 수정.
+
+./src/fbase.js 에서 import "firebase/firestore"; / export const dbService = firebase.firestore(); 추가 후 리액트 서버 재시작.
+
+파이어스토어 데이터 저장
+파이어스토어는 실시간으로 동작하는 데이터베이스라 트윗한 정보를 바로 반영.
+
+./src/route/Home.js dbService.collection("nweets").add <- Promise를 반환하므로 async-await 문을 사용. 컬렉션 생성 후 text 상태의 값을 문서로 저장. p116 참고.
+
+파이어스토어에서 문서 읽어오기.
+get 함수 사용 = get 함수는 add 함수 처럼 단순히 1번만 실행으로 읽어올 수 없음. 문서의 개수가 많으면 forEach 함수로 실행.
+
+./src/route/Home.js
+
+dbNweers.forEach((document) => console.log(document.data()));
 
 
 

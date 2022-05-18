@@ -1,5 +1,6 @@
 import { dbService } from "fbase"
 import { useState } from "react"
+import Nweet from "components/Nweet"
 
 const Home = () => {
   const [nweet, setNweet] = useState()
