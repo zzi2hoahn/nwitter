@@ -26,7 +26,7 @@ files가 배열인 이유는 input 엘리먼트의 multiple 속성에 대비하�
 여러 개의 이미지 파일 업로드 시 배열로 파일 정보를 보여주기 위함.
 
 2-2 웹 브라우저에 사진 출력
-브라우저 API인 FileReader 사용
+웹 브라우저 api인 FileReader 사용
 new FileReader()와 같이 new 키워드와 함께 사용
 onloadend : readAsDataURL 함수에 전달한 파일이 함수로 들어간 이후의 결과값이 나온 다음 상황 감지.
 
