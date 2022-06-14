@@ -1,5 +1,18 @@
 원본코드 : https://github.com/easysIT/nwitter
 
+[06월14일보강]
+
+04-userObj 크기 줄이기
+
+1. uid.dispaly
+
+05-isLoggedIn 크기 줄이기 
+
+
+
+
+197페이지 자료 수정
+
 
 [06월08일]
 
