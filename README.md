@@ -2,15 +2,30 @@
 
 [06월14일보강]
 
-04-userObj 크기 줄이기
+07-2. 프로필 페이지 기능 보완하기
 
-1. uid.dispaly
+1. 프로필 업데이트 기능 추가
+2. 일반 회원가입으로 로그인해서 userObj 출력
+3. displayName 항목이 null 출력
+4. onChange함수를 이용해 setNewDisplayName에 input 엘리먼트의 입력값 전달
+5. onSubmit함수 수정 실제로 프로필 업데이트 기능이 x
 
-05-isLoggedIn 크기 줄이기 
+07-3. 프로필 실시간 업데이트
 
+1. 컴포넌트 리렌더링하는 방법으로 구현 가능
+2. useState로 관리 중인 상태가 업데이트 되는 경우
+3. props로 받은 요소가 업데이트 되는 경우
 
+07-4. refreshUser 함수 추가
 
-197페이지 자료 수정
+1. userObj는 스스로 업데이트 된 프로필 반영을 못함
+2. 새 프로필을 파이어베이스에서 받아 userObj에 반영
+3. userObj를 새로고침하는 함수
+
+07-05. userObj & isLoggedIn 용량 줄이기
+
+1. isLoggedIn 크기 줄이기 -> Boolean함수를 사용해서 userObj 여부 확인
+
 
 ======================================================================
 
